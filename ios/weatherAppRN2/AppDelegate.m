@@ -4,6 +4,7 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import "RNSplashScreen.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -34,6 +35,7 @@ static void InitializeFlipper(UIApplication *application) {
 
   [ReactNativeNavigation bootstrapWithDelegate:self launchOptions:launchOptions];
   [RNSplashScreen show];
+  [GMSServices provideAPIKey:@"AIzaSyB0GTO5efgxCM6g7TeKFWFPDKNX2nXwzpU"]; // add this line using the api key obtained from Google Console
 
   return YES;
 }
