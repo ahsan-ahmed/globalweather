@@ -5,8 +5,8 @@ import { goToSignin, goToHome } from './navigations/navigation';
 
 export default function App(props) {
     useEffect(() => {
-        SplashScreen.hide();
-        goToHome();
+        // SplashScreen.hide();
+        // goToHome();
     }, []);
 
     // const checkAuth = () => {
