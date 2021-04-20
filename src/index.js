@@ -7,6 +7,7 @@ export default function App(props) {
     useEffect(() => {
         // SplashScreen.hide();
         // goToHome();
+        // SplashScreen.hide();
     }, []);
 
     // const checkAuth = () => {
