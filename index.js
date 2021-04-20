@@ -3,12 +3,18 @@ import { registerScreens } from './src/screens';
 
 registerScreens();
 
-Navigation.events().registerAppLaunchedListener(() => {
+Navigation.events().registerAppLaunchedListener(async () => {
     Navigation.setRoot({
         root: {
-            component: {
-                name: 'com.globalWeatherRN2.WelcomeScreen',
-            },
-        },
+            stack: {
+                children: [
+                    {
+                        component: {
+                            name: 'com.globalWeatherRN2.Home',
+                        }
+                    }
+                ]
+            }
+        }
     });
 });
