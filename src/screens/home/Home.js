@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Platform, FlatList, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Platform, FlatList, Pressable } from 'react-native';
 import SplashScreen from 'react-native-splash-screen'
+import { goToStackNavigation } from '../../navigations/navigation';
 
 export default function Home(props) {
     const [cityList, setCityList] = useState([]);
@@ -25,15 +26,25 @@ export default function Home(props) {
     }
     const renderItem = ({ item }) => {
         return (
-            <View style={styles.cityListItem}>
-                <View>
-                    <Text style={styles.title}>{item.name}</Text>
-                    <Text style={styles.desciption}>{item.weather?.[0]?.main}</Text>
+            <Pressable onPress={() => {
+                goToStackNavigation(
+                    props,
+                    'com.globalWeatherRN2.WeatherDetail',
+                    'Weather App',
+                    item
+                )
+            }}>
+                <View style={styles.cityListItem}>
+                    <View>
+                        <Text style={styles.title}>{item.name}</Text>
+                        <Text style={styles.desciption}>{item.weather?.[0]?.main}</Text>
+                    </View>
+                    <View style={styles.tempContainer}>
+                        <Text style={styles.temp}>{parseInt(item?.main?.temp - 273.15)}°C</Text>
+                    </View>
                 </View>
-                <View style={styles.tempContainer}>
-                    <Text style={styles.temp}>{parseInt(item?.main?.temp - 273.15)}°C</Text>
-                </View>
-            </View>
+            </Pressable>
+
         )
     }
     return (
@@ -65,6 +76,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 16,
         color: "#000",
+        paddingBottom: 8
     },
     desciption: {
         fontSize: 16,
