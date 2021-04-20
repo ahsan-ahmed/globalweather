@@ -18,22 +18,20 @@ export default function Home(props) {
             const cityListResponse = await cityListJson.json();
             if (cityListResponse?.cod === "200") {
                 setCityList(cityListResponse.list);
-                console.log(cityListResponse)
             }
         } catch (error) {
             console.log(error, "error")
         }
     }
     const renderItem = ({ item }) => {
-        console.log(item, "renderItem")
         return (
             <View style={styles.cityListItem}>
                 <View>
                     <Text style={styles.title}>{item.name}</Text>
-                    <Text style={styles.title}>{item.name}</Text>
+                    <Text style={styles.desciption}>{item.weather?.[0]?.main}</Text>
                 </View>
-                <View>
-                    <Text style={styles.title}>{item.name}</Text>
+                <View style={styles.tempContainer}>
+                    <Text style={styles.temp}>{parseInt(item?.main?.temp - 273.15)}°C</Text>
                 </View>
             </View>
         )
@@ -61,9 +59,24 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         padding: 20,
+        borderBottomWidth: 1,
+        borderBottomColor: "#F0F0F0",
     },
     title: {
         fontSize: 16,
+        color: "#000",
+    },
+    desciption: {
+        fontSize: 16,
+        color: "#000",
+        opacity: 0.8,
+    },
+    temp: {
+        fontSize: 34,
+    },
+    tempContainer: {
+        alignItems: "center",
+        justifyContent: "center",
     },
 });
 
