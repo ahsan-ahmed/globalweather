@@ -27,8 +27,14 @@ export default function Home(props) {
     const renderItem = ({ item }) => {
         console.log(item, "renderItem")
         return (
-            <View style={styles.item}>
-                <Text style={styles.title}>{item.name}</Text>
+            <View style={styles.cityListItem}>
+                <View>
+                    <Text style={styles.title}>{item.name}</Text>
+                    <Text style={styles.title}>{item.name}</Text>
+                </View>
+                <View>
+                    <Text style={styles.title}>{item.name}</Text>
+                </View>
             </View>
         )
     }
@@ -51,14 +57,13 @@ const styles = StyleSheet.create({
     welcome: {
         fontSize: 28,
     },
-    item: {
-        backgroundColor: '#f9c2ff',
+    cityListItem: {
+        flexDirection: "row",
+        justifyContent: "space-between",
         padding: 20,
-        marginVertical: 8,
-        marginHorizontal: 16,
     },
     title: {
-        fontSize: 32,
+        fontSize: 16,
     },
 });
 
