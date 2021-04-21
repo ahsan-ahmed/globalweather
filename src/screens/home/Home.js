@@ -1,30 +1,52 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Platform, FlatList, Pressable } from 'react-native';
-import SplashScreen from 'react-native-splash-screen'
+import { View, Text, StyleSheet, Platform, FlatList, Pressable, TouchableOpacity, Alert } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
+import NotifService from './../../../NotifService';
 import { goToStackNavigation } from '../../navigations/navigation';
 
-export default function Home(props) {
-    const [cityList, setCityList] = useState([]);
+export default class Home extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            cityList: [],
+        };
 
-    useEffect(() => {
+        this.notif = new NotifService(
+            this.onRegister.bind(this),
+            this.onNotif.bind(this),
+        );
+    }
+
+    componentDidMount() {
         SplashScreen.hide();
-        fetchWeatherList();
-    }, []);
+        this.fetchWeatherList();
+        this.notif.localNotif('sample.mp3');
+    }
+    onRegister(token) {
+        this.setState({ registerToken: token.token, fcmRegistered: true });
+    }
 
-    const fetchWeatherList = async () => {
+    onNotif(notif) {
+        Alert.alert(notif.title, notif.message);
+    }
+
+    handlePerm(perms) {
+        Alert.alert('Permissions', JSON.stringify(perms));
+    }
+    fetchWeatherList = async () => {
         try {
             const cityListJson = await fetch(
                 `http://api.openweathermap.org/data/2.5/find?lat=23.68&lon=90.35&cnt=50&appid=290527e6dcee81890fb548f19083cde3`, {}
             );
             const cityListResponse = await cityListJson.json();
             if (cityListResponse?.cod === "200") {
-                setCityList(cityListResponse.list);
+                this.setState({ cityList: cityListResponse.list })
             }
         } catch (error) {
             console.log(error, "error")
         }
     }
-    const renderItem = ({ item }) => {
+    renderItem = ({ item }) => {
         return (
             <Pressable onPress={() => {
                 goToStackNavigation(
@@ -47,15 +69,17 @@ export default function Home(props) {
 
         )
     }
-    return (
-        <View style={styles.container}>
-            <FlatList
-                data={cityList}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-            />
-        </View>
-    );
+    render() {
+        return (
+            <View style={styles.container}>
+                <FlatList
+                    data={this.state.cityList}
+                    renderItem={this.renderItem}
+                    keyExtractor={item => item.id}
+                />
+            </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({

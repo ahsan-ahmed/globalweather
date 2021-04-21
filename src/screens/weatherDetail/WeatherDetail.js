@@ -4,7 +4,7 @@ import MapView from 'react-native-maps';
 import cloudImage from "./../../assets/images/731429-200.png"
 
 export default function WeatherDetail(props) {
-    console.log(props, "WeatherDetail")
+    // console.log(props, "WeatherDetail")
     const [region, setRegion] = useState({});
     useEffect(() => {
         onRegionChange({

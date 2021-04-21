@@ -41,6 +41,7 @@
 		3CA6B79D38FED9EEB1C77B22 /* Pods-weatherAppRN2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatherAppRN2.release.xcconfig"; path = "Target Support Files/Pods-weatherAppRN2/Pods-weatherAppRN2.release.xcconfig"; sourceTree = "<group>"; };
 		5680845C10AC180C6C7CFEF0 /* libPods-weatherAppRN2-weatherAppRN2Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-weatherAppRN2-weatherAppRN2Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = weatherAppRN2/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BDC2CD66262FF6160043E123 /* weatherAppRN2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = weatherAppRN2.entitlements; path = weatherAppRN2/weatherAppRN2.entitlements; sourceTree = "<group>"; };
 		CA28051577743C823EF0F675 /* Pods-weatherAppRN2-weatherAppRN2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatherAppRN2-weatherAppRN2Tests.debug.xcconfig"; path = "Target Support Files/Pods-weatherAppRN2-weatherAppRN2Tests/Pods-weatherAppRN2-weatherAppRN2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D3258A57BFD3FFB10FDC2C11 /* Pods-weatherAppRN2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatherAppRN2.debug.xcconfig"; path = "Target Support Files/Pods-weatherAppRN2/Pods-weatherAppRN2.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -86,6 +87,7 @@
 		13B07FAE1A68108700A75B9A /* weatherAppRN2 */ = {
 			isa = PBXGroup;
 			children = (
+				BDC2CD66262FF6160043E123 /* weatherAppRN2.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -104,7 +106,6 @@
 				CA28051577743C823EF0F675 /* Pods-weatherAppRN2-weatherAppRN2Tests.debug.xcconfig */,
 				14C48D59486020A86749713A /* Pods-weatherAppRN2-weatherAppRN2Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -484,6 +485,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = weatherAppRN2/weatherAppRN2.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = weatherAppRN2/Info.plist;
@@ -510,6 +512,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = weatherAppRN2/weatherAppRN2.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = weatherAppRN2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
