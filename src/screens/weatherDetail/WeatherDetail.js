@@ -12,7 +12,7 @@ export default function WeatherDetail(props) {
             longitude: props.data.coord.lon,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
-        })
+        });
     }, []);
 
     const onRegionChange = (region) => {

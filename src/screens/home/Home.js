@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Platform, FlatList, Pressable, TouchableOpacity
 import SplashScreen from 'react-native-splash-screen';
 import NotifService from './../../../NotifService';
 import { goToStackNavigation } from '../../navigations/navigation';
+import cloudImage from "./../../assets/images/731429-200.png";
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -20,7 +21,6 @@ export default class Home extends React.Component {
     componentDidMount() {
         SplashScreen.hide();
         this.fetchWeatherList();
-        this.notif.localNotif('sample.mp3');
     }
     onRegister(token) {
         this.setState({ registerToken: token.token, fcmRegistered: true });
@@ -49,8 +49,15 @@ export default class Home extends React.Component {
     renderItem = ({ item }) => {
         return (
             <Pressable onPress={() => {
+                this.notif.localNotif(
+                    'sample.mp3',
+                    `Current Temperature: ${parseInt(item?.main?.temp - 273.15)}°C`,
+                    `WeatherApp`,
+                    cloudImage,
+                    cloudImage,
+                );
                 goToStackNavigation(
-                    props,
+                    this.props,
                     'com.globalWeatherRN2.WeatherDetail',
                     'Weather App',
                     item
