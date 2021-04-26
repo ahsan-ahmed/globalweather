@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import { View, StyleSheet, Text, Image, ScrollView, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 import cloudImage from "./../../assets/images/731429-200.png"
+
+const height = Dimensions.get('window').height * 0.5;
+const width = Dimensions.get('window').width;
 
 export default function WeatherDetail(props) {
     // console.log(props, "WeatherDetail")
@@ -21,41 +24,43 @@ export default function WeatherDetail(props) {
 
     return (
         <View style={styles.container}>
-            <View style={{ position: 'relative', height: 500 }}>
-                <MapView
-                    style={{ left: 0, right: 0, top: 0, bottom: 0, position: 'absolute' }}
-                    region={region}
-                    onRegionChange={onRegionChange}
-                />
-            </View>
-            <View style={styles.detailContainer}>
-                <View style={styles.cityName}>
-                    <Text style={styles.cityNameText}>{props.data?.name}</Text>
+            <ScrollView>
+                <View style={{ position: 'relative', height: height }}>
+                    <MapView
+                        style={{ left: 0, right: 0, top: 0, bottom: 0, position: 'absolute' }}
+                        region={region}
+                        onRegionChange={onRegionChange}
+                    />
                 </View>
-                <View style={{ flexDirection: "row" }}>
-                    <View style={{ flex: 1 }}>
-                        <Text style={styles.weatherInfotext}>{props.data?.weather?.[0]?.main}</Text>
-                        <Text style={styles.weatherInfotext}>{"Humadity: " + props.data?.main?.humidity}</Text>
-                        <Text style={styles.weatherInfotext}>{"Wind Speed: " + props.data?.wind?.speed}</Text>
-                        <Text style={styles.weatherInfotext}>{"Max. temp: " + parseInt(props.data?.main?.temp_max - 273.15) + "°C"}</Text>
-                        <Text style={styles.weatherInfotext}>{"Min. temp: " + parseInt(props.data?.main?.temp_min - 273.15) + "°C"}</Text>
+                <View style={styles.detailContainer}>
+                    <View style={styles.cityName}>
+                        <Text style={styles.cityNameText}>{props.data?.name}</Text>
                     </View>
-                    <View style={{ flex: 1, justifyContent: "flex-start", alignItems: "center" }}>
-                        <Text style={styles.tempDetail}>{parseInt(props.data?.main?.temp - 273.15)}°C</Text>
-                        <Image
-                            style={{ height: 100, width: 100 }}
-                            source={cloudImage}
-                        />
+                    <View style={{ flexDirection: "row" }}>
+                        <View style={{ flex: 1 }}>
+                            <Text style={styles.weatherInfotext}>{props.data?.weather?.[0]?.main}</Text>
+                            <Text style={styles.weatherInfotext}>{"Humadity: " + props.data?.main?.humidity}</Text>
+                            <Text style={styles.weatherInfotext}>{"Wind Speed: " + props.data?.wind?.speed}</Text>
+                            <Text style={styles.weatherInfotext}>{"Max. temp: " + parseInt(props.data?.main?.temp_max - 273.15) + "°C"}</Text>
+                            <Text style={styles.weatherInfotext}>{"Min. temp: " + parseInt(props.data?.main?.temp_min - 273.15) + "°C"}</Text>
+                        </View>
+                        <View style={{ flex: 1, justifyContent: "flex-start", alignItems: "center" }}>
+                            <Text style={styles.tempDetail}>{parseInt(props.data?.main?.temp - 273.15)}°C</Text>
+                            <Image
+                                style={{ height: 100, width: 100 }}
+                                source={cloudImage}
+                            />
+                        </View>
                     </View>
                 </View>
-            </View>
+            </ScrollView>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-
+        flex: 1
     },
     cityName: {
 

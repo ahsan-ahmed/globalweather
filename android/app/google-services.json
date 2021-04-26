@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "987079381144",
+    "firebase_url": "https://azure-maps.firebaseio.com",
+    "project_id": "azure-maps",
+    "storage_bucket": "azure-maps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:987079381144:android:8588b4ff2cd82f988440ed",
+        "android_client_info": {
+          "package_name": "com.weatherapprn2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "987079381144-lo54k0odufdgn5h4kl2jcbsv5f8pf3sp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD96TN0nm2vFv_BOj9YLWF8DtklFf-AkB8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "987079381144-lo54k0odufdgn5h4kl2jcbsv5f8pf3sp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
